@@ -1,0 +1,14 @@
+{
+  "name": "busca-cep",
+  "version": "1.0.0",
+  "description": "Desafio técnico realizado na data de 31/08/2020, para a vaga de Desenvolvedor Full Stack Júnior, na Squad PCP do LuizaLabs.",
+  "main": "index.js",
+  "repository": "https://github.com/scheffeld/busca-cep",
+  "author": "Roger Scheffeld",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7"
+  }
+}
