@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
+const routes = require('./src/routes/routes')
 
 /**
  * Adicionando Middlewares
  */
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-console.log({ serverUp: true })
+app.use(routes)
 
 app.listen('3333')
