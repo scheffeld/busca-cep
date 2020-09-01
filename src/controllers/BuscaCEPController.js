@@ -22,8 +22,6 @@ module.exports = {
         while((response.data).hasOwnProperty('error')){
             stringfyCEP = addZero(stringfyCEP)
             response = await api.get(stringfyCEP)
-            console.log(stringfyCEP)
-            console.log(response.data)
         }
 
         const { endereco: rua, bairro, cidade, uf } = response.data
