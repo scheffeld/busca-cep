@@ -1,16 +1,13 @@
 /**
- * ArrowFunction que valida o CEP informado pelo usuário
- * @param {*} cep Number
+ * Valida o CEP informado pelo usuário.
+ * @param {String} cep CEP à ser validado
  */
 const validateCEP = (cep) => {
+
+    const cepRegex = new RegExp(/(^\d{8}$)|(^\d{5}-\d{3}$)|(^\d{5} \d{3}$)/)
     
-    const stringfyCEP = String(cep)
+    return cepRegex.test(cep)
 
-    if(stringfyCEP.length < 8){
-        return false
-    }
-
-    return true
 };
 
 module.exports = validateCEP
