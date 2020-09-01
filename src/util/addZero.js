@@ -1,5 +1,5 @@
 /**
- * Substitui digito por zero.
+ * Substitui o digito por zero.
  * @param {String} cep CEP válido
  */
 const addZero = (cep, index) => {
