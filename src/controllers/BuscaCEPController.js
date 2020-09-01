@@ -1,28 +1,39 @@
 const api = require('../services/api');
 const validateCEP = require('../util/validateCEP');
+const addZero = require('../util/addZero');
 
 module.exports = {
     async show(req, res){
-        const { cep } = req.body
+        const { body } = req
 
-        const validatedCEP = validateCEP(cep)
-
-        if(validatedCEP){
-            const stringfyCEP = String(cep)
-
-            const response = await api.get(stringfyCEP)
-            
-            const rua = response.data.logradouro
-            const { cidade, bairro, estado } = response.data
-            
-            return res.json({
-                rua,
-                cidade,
-                bairro,
-                estado
-            })
+        if(!body.hasOwnProperty('cep')){
+            return res.json({ error: 'CEP Inválido.'})
         }
 
-        return res.json({validatedCEP})
+        let stringfyCEP = String(body.cep)
+        const validatedCEP = validateCEP(stringfyCEP)
+
+        if(!validatedCEP){
+            return res.json({ error: 'CEP Inválido.'})
+        }
+
+        let response = await api.get(stringfyCEP)
+
+        while((response.data).hasOwnProperty('error')){
+            stringfyCEP = addZero(stringfyCEP)
+            response = await api.get(stringfyCEP)
+            console.log(stringfyCEP)
+            console.log(response.data)
+        }
+
+        const { endereco: rua, bairro, cidade, uf } = response.data
+
+        return res.json({
+            cep: stringfyCEP,
+            rua,
+            bairro,
+            cidade,
+            uf
+        })
     }
 }
