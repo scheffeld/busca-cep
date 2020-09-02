@@ -1,6 +1,6 @@
 # Busca CEP - RestFul API
 
-A API tem como objetivo retornar os dados de correspondência apartir de um CEP. Essa é uma API RestFul, ou seja, segue os padrãos Rest de designe de APIs.
+A API tem como objetivo retornar os dados de correspondência apartir de um CEP. Essa é uma API RestFul, ou seja, segue os padrãos Rest de design de APIs.
 
 ## Endpoints
 
