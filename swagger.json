@@ -8,7 +8,7 @@
     "info": {
       "version": "1.0.0",
       "title": "Busca CEP API",
-      "description": "Busca os dados de endereço apartir do CEP.",
+      "description": "A API tem como objetivo retornar os dados de correspondência apartir de um CEP. Essa é uma API RestFul, ou seja, segue os padrãos Rest de design de APIs.",
       "contact": {
         "name": "Roger Scheffeld",
         "url": "https://github.com/scheffeld",
