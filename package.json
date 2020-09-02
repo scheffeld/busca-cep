@@ -7,8 +7,8 @@
   "author": "Roger Scheffeld",
   "license": "MIT",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app -ignore __tests__",
+    "start": "node server",
+    "dev": "nodemon server",
     "test": "jest"
   },
   "dependencies": {
@@ -16,7 +16,9 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "jest": "^26.4.2"
