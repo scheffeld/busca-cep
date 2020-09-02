@@ -4,8 +4,9 @@ A API tem como objetivo retornar os dados de correspondência apartir de um CEP.
 
 ## Endpoints
 
+* `GET /api-docs/v1`: Documentação da API
 * `GET /api/v1`: Um simples teste do estado do servidor da aplicação
-* `POST /api/busca-cep`: Retorna os dados de corrêspondencia apartir do CEP informado.
+* `POST /api/v1/busca-cep`: Retorna os dados de corrêspondencia apartir do CEP informado.
 * `null`: Rota padrão, retorna 404 se o endpoint informado não existir.
 
 ## Utilização
