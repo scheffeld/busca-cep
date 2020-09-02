@@ -1,0 +1,92 @@
+{
+    "swagger": "2.0",
+    "schemes": [
+      "http"
+    ],
+    "host": "localhost:3333",
+    "basePath": "/api/v1",
+    "info": {
+      "version": "1.0.0",
+      "title": "Busca CEP API",
+      "description": "Busca os dados de endereço apartir do CEP.",
+      "contact": {
+        "name": "Roger Scheffeld",
+        "url": "https://github.com/scheffeld",
+        "email": "roger.andretto@magazineluiza.com.br"
+      },
+      "license": {
+        "name": "MIT",
+        "url": "http://opensource.org/licenses/MIT"
+      }
+    },
+    "paths": {
+      "/": {
+        "get": {
+          "description": "Verifica se a aplicação subiu.",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Aplicação está operando.",
+              "schema": {
+                "type": "object",
+                "example": {
+                  "ping": "pong"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/busca-cep": {
+        "post": {
+          "description": "Busca um endereço apartir de um CEP válido.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "cep_",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cep": {
+                    "type": "string",
+                    "example": "14401226"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Busca efetuada com sucesso",
+              "schema": {
+                "type": "object",
+                "example": {
+                  "rua": "Rua Espírito Santo",
+                  "bairro": "Vila Aparecida",
+                  "cidade": "Franca",
+                  "uf": "SP"
+                }
+              }
+            },
+            "400": {
+              "description": "Requisição Inválida",
+              "schema": {
+                "type": "object",
+                "example": {
+                  "error": "CEP inválido."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
