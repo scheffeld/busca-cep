@@ -10,7 +10,7 @@ const BuscaCEPController = require('../controllers/BuscaCEPController')
  * Rota de verificaçao do Servidor.
  * Method: GET
  */
-routes.get('/v1/', (req, res) => {
+routes.get('/api/v1', (req, res) => {
     return res.json({ ping: 'pong' })
 });
 
@@ -18,7 +18,7 @@ routes.get('/v1/', (req, res) => {
  * Rota de busca do CEP
  * Method: GET
  */
-routes.get('/v1/busca-cep', BuscaCEPController.show)
+routes.post('/api/v1/busca-cep', BuscaCEPController.show)
 
 
 module.exports = routes
