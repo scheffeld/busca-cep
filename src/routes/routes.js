@@ -20,13 +20,5 @@ routes.get('/api/v1/ping', (req, res) => {
  */
 routes.post('/api/v1/busca-cep', BuscaCEPController.show)
 
-/**
- * Rota default
- * Method: GET
- */
-routes.use((req, res) => {
-    return res.status(404).send('Não foi possível localizar esse recurso.')
-})
-
 
 module.exports = routes

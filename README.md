@@ -19,7 +19,6 @@ Por não exigir um padrão de arquitetura, conseguimos mais liberdade para organ
 * `GET /api-docs/v1`: Rota de documentação da aplicação.
 * `GET /api/v1`: Rota de retorno de ping na aplicação.
 * `POST /api/v1/busca-cep`: Rota de retorno dos dados apartir de um CEP.
-* `null`: Rota de recurso inexistente.
 
 ## Utilização
 
