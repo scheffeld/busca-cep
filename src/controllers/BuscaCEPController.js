@@ -4,34 +4,31 @@ const addZero = require('../util/addZero');
 
 module.exports = {
     async show(req, res){
-        const { body } = req
+        try{
+            const { body } = req
 
-        if(!body.hasOwnProperty('cep')){
-            return res.json({ error: 'CEP Inválido.'})
+            let stringfyCEP = String(body.cep)
+            validateCEP(stringfyCEP)
+
+            let response = await api.get(stringfyCEP)
+
+            while((response.data).hasOwnProperty('error')){
+                stringfyCEP = addZero(stringfyCEP)
+                response = await api.get(stringfyCEP)
+            }
+
+            const { endereco: rua, bairro, cidade, uf } = response.data
+
+            return res.json({
+                cep: stringfyCEP,
+                rua,
+                bairro,
+                cidade,
+                uf
+            })
         }
-
-        let stringfyCEP = String(body.cep)
-        const validatedCEP = validateCEP(stringfyCEP)
-
-        if(!validatedCEP){
-            return res.json({ error: 'CEP Inválido.'})
+        catch(e){
+            res.status(400).json({ error: 'CEP Inválido.'})
         }
-
-        let response = await api.get(stringfyCEP)
-
-        while((response.data).hasOwnProperty('error')){
-            stringfyCEP = addZero(stringfyCEP)
-            response = await api.get(stringfyCEP)
-        }
-
-        const { endereco: rua, bairro, cidade, uf } = response.data
-
-        return res.json({
-            cep: stringfyCEP,
-            rua,
-            bairro,
-            cidade,
-            uf
-        })
     }
 }
