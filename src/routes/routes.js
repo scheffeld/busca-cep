@@ -1,14 +1,19 @@
 const express = require('express');
 const routes = express.Router();
-const jwt = require('../util/jwt');
 
 /**
  * Adicionando Controllers
  */
-const BuscaCEPController = require('../controllers/BuscaCEPController')
+const BuscaCEPController = require('../controllers/BuscaCEPController');
+const AuthorizationController = require('../controllers/AuthorizationController');
 
 /**
- * Rota de verificaçao do Servidor.
+ * Adicionando Middlewares
+ */
+const AuthMiddleware = require('../middlewares/AuthMiddleware');
+
+/**
+ * Rota de verificação do Servidor.
  * Method: GET
  */
 routes.get('/api/v1/ping', (req, res) => {
@@ -19,22 +24,13 @@ routes.get('/api/v1/ping', (req, res) => {
  * Rota para gerar um token válido
  * Method: GET
  */
-routes.get('/api/v1/token', (req, res) => {
-    const userInfo = {
-        user: 'admin',
-        pass: 'admin'
-    }
-
-    const token = jwt.sign(userInfo);
-
-    return res.json({ token })
-})
+routes.get('/api/v1/token', AuthorizationController.generateToken);
 
 /**
  * Rota de busca do CEP
  * Method: GET
  */
-routes.post('/api/v1/busca-cep', BuscaCEPController.show)
+routes.post('/api/v1/busca-cep', AuthMiddleware.authorization, BuscaCEPController.show)
 
 
 module.exports = routes
