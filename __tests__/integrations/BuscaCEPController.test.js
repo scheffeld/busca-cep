@@ -1,10 +1,18 @@
 const app = require('../../app');
 const request = require('supertest');
+const jwt = require('../../src/util/jwt');
 
 describe('BuscaCEP Controller', () => {
     it('should return address data from a valid zip code.', async () => {
+        const userInfo = {
+            user: 'admin',
+            pass: 'admin'
+        }
         const response = await request(app)
-            .get('/v1/busca-cep')
+            .post('/api/v1/busca-cep')
+            .set({
+                Authorization: `Bearer ${jwt.sign(userInfo)}`
+            })
             .send({
                 cep: '14401221'
             })
