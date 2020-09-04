@@ -3,6 +3,13 @@
     "schemes": [
       "http"
     ],
+    "securityDefinitions": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
     "host": "localhost:3333",
     "basePath": "/api/v1",
     "info": {
@@ -20,9 +27,28 @@
       }
     },
     "paths": {
+      "/token": {
+        "get": {
+          "description": "Gera um token válido para uso da aplicação.",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "Token gerado com sucesso.",
+              "schema": {
+                "type": "object",
+                "example": {
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJwYXNzIjoiYWRtaW4iLCJpYXQiOjE1OTkxODQyNTEsImV4cCI6MTU5OTE4NTE1MX0.hgFk8xVN1sOajdnS_3nuU5umKFFb90yKzYsTKWf_NEU"
+                }
+              }
+            }
+          }
+        }
+      },
       "/ping": {
         "get": {
-          "description": "A API tem como objetivo retornar os dados de correspondência apartir de um CEP. Essa é uma API RestFul, ou seja, segue os padrãos Rest de design de APIs.",
+          "description": "",
           "produces": [
             "application/json"
           ],
@@ -41,7 +67,14 @@
       },
       "/busca-cep": {
         "post": {
-          "description": "Busca um endereço apartir de um CEP válido.",
+          "security": [
+            {
+              "ApiKeyAuth": [
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJwYXNzIjoiYWRtaW4iLCJpYXQiOjE1OTkxODYxMzEsImV4cCI6MTU5OTE4NzAzMX0.dlCiHC5BV2VvuRuVuHI5AZpOHZSysMLglDz72QIlXwo"
+              ]
+            }
+          ],
+          "description": "Busca um endereço apartir de um CEP válido utilizando um token.",
           "consumes": [
             "application/json"
           ],
@@ -83,6 +116,13 @@
                 "example": {
                   "error": "CEP inválido."
                 }
+              }
+            },
+            "401": {
+              "description": "Não autorizado.",
+              "schema": {
+                "type": "string",
+                "example": "Unauthorized"
               }
             }
           }
