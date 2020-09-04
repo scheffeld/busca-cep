@@ -9,6 +9,6 @@ module.exports = {
     
         const token = jwt.sign(userInfo);
     
-        return res.json({ token })
+        return res.status(201).json({ token })
     }
 }
