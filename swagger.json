@@ -7,7 +7,8 @@
       "ApiKeyAuth": {
         "type": "apiKey",
         "name": "Authorization",
-        "in": "header"
+        "in": "header",
+        "description": "A aplicação utiliza um JWT para autorizar o acesso aos recursos. Insira 'Bearer validToken' na autorização e substitua 'validToken' pelo token gerado."
       }
     },
     "host": "localhost:3333",
@@ -29,7 +30,11 @@
     "paths": {
       "/token": {
         "get": {
-          "description": "Gera um token válido para uso da aplicação.",
+          "summary": "Gera um JWT válido.",
+          "tags": [
+            "Token"
+          ],
+          "description": "A rota '/token' gera um token válido, no formato JWT, para acessar os recursos da aplicação.",
           "produces": [
             "application/json"
           ],
@@ -48,13 +53,17 @@
       },
       "/ping": {
         "get": {
-          "description": "",
+          "summary": "Executa um ping na aplicação.",
+          "tags": [
+            "Ping"
+          ],
+          "description": "A rota '/ping' faz uma requisição para verificar se a aplicação está operando.",
           "produces": [
             "application/json"
           ],
           "responses": {
             "200": {
-              "description": "Aplicação está operando.",
+              "description": "Aplicação está pingando.",
               "schema": {
                 "type": "object",
                 "example": {
@@ -67,6 +76,10 @@
       },
       "/busca-cep": {
         "post": {
+          "summary": "Retorna os dados de correspondencia.",
+          "tags": [
+            "Busca CEP"
+          ],
           "security": [
             {
               "ApiKeyAuth": [
@@ -74,7 +87,7 @@
               ]
             }
           ],
-          "description": "Busca um endereço apartir de um CEP válido utilizando um token.",
+          "description": "Retorna os dados de correspondencia apartir de um CEP válido informado. Caso a aplicação não encontre endereço com o CEP informado, o ultimo digito é substituido por 0 até que retorne um endereço.",
           "consumes": [
             "application/json"
           ],
