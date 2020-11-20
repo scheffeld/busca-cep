@@ -75,7 +75,7 @@
         }
       },
       "/busca-cep": {
-        "post": {
+        "get": {
           "summary": "Retorna os dados de correspondencia.",
           "tags": [
             "Busca CEP"
