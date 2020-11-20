@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "schemes": [
-      "http"
+      "https"
     ],
     "securityDefinitions": {
       "ApiKeyAuth": {
@@ -11,7 +11,7 @@
         "description": "A aplicação utiliza um JWT para autorizar o acesso aos recursos. Insira 'Bearer validToken' na autorização e substitua 'validToken' pelo token gerado."
       }
     },
-    "host": "localhost:3333",
+    "host": "https://busca-cep-bot.herokuapp.com",
     "basePath": "/api/v1",
     "info": {
       "version": "1.0.0",
@@ -20,7 +20,7 @@
       "contact": {
         "name": "Roger Scheffeld",
         "url": "https://github.com/scheffeld",
-        "email": "roger.andretto@magazineluiza.com.br"
+        "email": "rscheffeld@gmail.com"
       },
       "license": {
         "name": "MIT",
