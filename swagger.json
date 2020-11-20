@@ -11,14 +11,14 @@
         "description": "A aplicação utiliza um JWT para autorizar o acesso aos recursos. Insira 'Bearer validToken' na autorização e substitua 'validToken' pelo token gerado."
       }
     },
-    "host": "https://busca-cep-bot.herokuapp.com",
+    "host": "busca-cep-bot.herokuapp.com",
     "basePath": "/api/v1",
     "info": {
       "version": "1.0.0",
       "title": "Busca CEP - RestFul API",
       "description": "A API tem como objetivo retornar os dados de correspondência apartir de um CEP. Essa é uma API RestFul, ou seja, segue os padrãos Rest de design de APIs.",
       "contact": {
-        "name": "Roger Scheffeld",
+        "name": "Roger Andretto Scheffeld",
         "url": "https://github.com/scheffeld",
         "email": "rscheffeld@gmail.com"
       },
