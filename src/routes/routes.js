@@ -30,7 +30,7 @@ routes.get('/api/v1/token', AuthorizationController.generateToken);
  * Rota de busca do CEP
  * Method: GET
  */
-routes.post('/api/v1/busca-cep', AuthMiddleware.authorization, BuscaCEPController.show)
+routes.get('/api/v1/busca-cep', AuthMiddleware.authorization, BuscaCEPController.show)
 
 
 module.exports = routes
